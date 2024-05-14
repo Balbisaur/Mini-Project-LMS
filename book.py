@@ -5,7 +5,7 @@ class Book:
         self.__isbn = isbn
         self.__genre = genre
         self.__publication_date = publication_date
-        self.__availability = True  # Initially available
+        self.__availability = True 
 
     def get_title(self):
         return self.__title
