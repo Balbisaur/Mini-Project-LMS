@@ -92,7 +92,8 @@ class LibrarySystem:
                 print("Invalid choice. Please try again.")
 
     def add_new_book(self):
-        title = input("Enter book title: ")
+        title = input("Enter book title: ") # getting the book's title, author name, ISBN, genre, and publication date from the user
+        author_name = input("Enter author name: ")
         author_name = input("Enter author name: ")
         isbn = input("Enter ISBN: ")
         genre = input("Enter genre: ")
