@@ -1,20 +1,19 @@
-
 from book import Book
 from user import User
 from author import Author
 
 class LibrarySystem:
     def __init__(self):
-        self.books = []
+        self.books = [] 
         self.users = []
         self.authors = []
 
-    def add_book(self, title, author_name, isbn, genre, publication_date):
-        author = self.find_or_create_author(author_name)
+    def add_book(self, title, author_name, isbn, genre, publication_date): # adding a new book to the list of books
+        author = self.add_new_author(author_name)       
         book = Book(title, author, isbn, genre, publication_date)
         self.books.append(book)
 
-    def find_or_create_author(self, author_name):
+    def add_new_author(self, author_name):# returns the author object if it already exists, otherwise creates a new author object and adds it to the list of authors
         for author in self.authors:
             if author.get_name() == author_name:
                 return author
@@ -31,14 +30,14 @@ class LibrarySystem:
         self.users.append(user)
 
     def display_users(self):
-        for i, user in enumerate(self.users, 1):
-            print(f"{i}. {user.get_name()} (ID: {user.get_library_id()})")
+        for i, user in enumerate(self.users, 1):    # displaying the user's name and library ID
+            print(f"{i}. {user.get_name()} (ID: {user.get_library_id()})") 
 
-    def add_author(self, name, biography):
+    def add_author(self, name, biography):  
         author = Author(name, biography)
         self.authors.append(author)
 
-    def display_authors(self):
+    def display_authors(self): # displaying the author's name and biography
         for i, author in enumerate(self.authors, 1):
             print(f"{i}. {author.get_name()}")
 
@@ -65,7 +64,7 @@ class LibrarySystem:
             else:
                 print("Invalid choice. Please try again.")
 
-    def book_operations(self):
+    def book_operations(self): 
         while True:
             print('''
             1.) Add new book
@@ -101,7 +100,6 @@ class LibrarySystem:
         self.add_book(title, author_name, isbn, genre, publication_date)
         print("Book added successfully!")
 
-    # Implement other book operations
 
     def user_operations(self):
         while True:
@@ -126,12 +124,11 @@ class LibrarySystem:
                 print("Invalid choice. Please try again.")
 
     def add_new_user(self):
-        name = input("Enter user name: ")
-        library_id = input("Enter library ID: ")
+        name = input("Enter user name: ")  # getting the user's name and library ID from the user
+        library_id = input("Enter library ID: ") 
         self.add_user(name, library_id)
         print("User added successfully!")
 
-    # Implement other user operations
 
     def author_operations(self):
         while True:
@@ -155,14 +152,12 @@ class LibrarySystem:
                 print("Invalid choice. Please try again.")
 
     def add_new_author(self):
-        name = input("Enter author name: ")
+        name = input("Enter author name: ") # getting the author's name and biography from the user
         biography = input("Enter author biography: ")
         self.add_author(name, biography)
         print("Author added successfully!")
 
-    # Implement other author operations
 
-# Main program
 if __name__ == "__main__":
     library_system = LibrarySystem()
     library_system.main_menu()
